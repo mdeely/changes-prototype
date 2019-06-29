@@ -59,10 +59,10 @@ body {
 
 .iconButton__container {
   position: fixed;
-  bottom: 40px;
+  bottom: calc( env(safe-area-inset-top) + 40px);
   z-index: 75; }
   .iconButton__container.projectListSelector {
-    left: 40px;
+    left: 32px;
     z-index: 125; }
     .iconButton__container.projectListSelector i {
       transition: all .3s ease-in-out; }
@@ -75,7 +75,7 @@ body {
       .iconButton__container.projectListSelector.active .iconButton i[class*="times"] {
         opacity: 1; }
   .iconButton__container.cameraOptions {
-    right: 40px; }
+    right: 32px; }
     .iconButton__container.cameraOptions > .iconButton {
       display: flex;
       margin-top: 24px;
@@ -106,7 +106,7 @@ body {
 
 .projectTitle__container {
   position: fixed;
-  top: 16px;
+  top: calc( env(safe-area-inset-top) + 16px);
   left: 0;
   right: 0;
   height: 54px;
