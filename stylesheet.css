@@ -1,0 +1,245 @@
+body {
+  color: white;
+  font-family: "Avenir";
+  margin: 0;
+  padding: 0; }
+  body * {
+    box-sizing: border-box; }
+  body ul {
+    margin: 0;
+    padding: 0; }
+
+.screen {
+  width: 100vw;
+  height: 100vh;
+  background-color: #797DDC;
+  position: relative;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity .3s ease-in-out; }
+  .screen.active {
+    opacity: 1;
+    pointer-events: initial; }
+  .screen.projectList {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    -webkit-backdrop-filter: blur(10px);
+    background-color: rgba(255, 255, 255, 0.75);
+    z-index: 100; }
+  .screen.photoOverlay {
+    background-image: url("assets/5B2C9603.jpg");
+    position: absolute;
+    width: 100vw;
+    height: 100vh;
+    background-position: center;
+    background-size: cover;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 50;
+    transition: all .2s ease-in-out; }
+    .screen.photoOverlay.listMode {
+      margin: 0 10px;
+      border-radius: 5px;
+      box-shadow: 0 6px 44px rgba(0, 0, 0, 0.2);
+      width: 300px;
+      height: 400px;
+      min-width: 300px;
+      left: 50%;
+      top: 25vh;
+      transform: translate(calc(-50% - 10px), 0); }
+
+.appOverlay {
+  width: 100vw;
+  height: 100vh; }
+
+.iconButton__container {
+  position: fixed;
+  bottom: 40px;
+  z-index: 75; }
+  .iconButton__container.projectListSelector {
+    left: 40px;
+    z-index: 125; }
+    .iconButton__container.projectListSelector i {
+      transition: all .3s ease-in-out; }
+      .iconButton__container.projectListSelector i[class*="times"] {
+        opacity: 0; }
+    .iconButton__container.projectListSelector.active .iconButton i {
+      transform: rotate(180deg); }
+      .iconButton__container.projectListSelector.active .iconButton i[class*="bars"] {
+        opacity: 0; }
+      .iconButton__container.projectListSelector.active .iconButton i[class*="times"] {
+        opacity: 1; }
+  .iconButton__container.cameraOptions {
+    right: 40px; }
+    .iconButton__container.cameraOptions > .iconButton {
+      display: flex;
+      margin-top: 24px;
+      transition: all .2s ease-in-out; }
+    .iconButton__container.cameraOptions [class*="fa-camera"] {
+      opacity: 0; }
+    .iconButton__container.cameraOptions.active > .iconButton {
+      margin-top: -70px;
+      opacity: 0; }
+      .iconButton__container.cameraOptions.active > .iconButton:nth-child(3) {
+        opacity: 1; }
+    .iconButton__container.cameraOptions.active [class*="fa-camera"] {
+      opacity: 1; }
+    .iconButton__container.cameraOptions.active [class*="fa-pencil-alt"] {
+      opacity: 0; }
+  .iconButton__container.projectOptions {
+    bottom: initial;
+    top: 8px;
+    width: 100%; }
+    .iconButton__container.projectOptions > .iconButton {
+      color: #797DDC;
+      background-color: white;
+      position: absolute; }
+      .iconButton__container.projectOptions > .iconButton.share {
+        right: 40px; }
+      .iconButton__container.projectOptions > .iconButton.settings {
+        left: 40px; }
+
+.projectTitle__container {
+  position: fixed;
+  top: 16px;
+  left: 0;
+  right: 0;
+  height: 54px;
+  max-height: 54px;
+  max-width: 300px;
+  background-color: rgba(255, 255, 255, 0.7);
+  border-radius: 50%;
+  text-align: center;
+  line-height: 54px;
+  border-radius: 27px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: clip;
+  width: 100%;
+  padding: 0 16px;
+  font-weight: 600;
+  color: #797DDC;
+  font-size: 18px;
+  margin: 0 auto;
+  z-index: 75;
+  -webkit-backdrop-filter: blur(10px); }
+
+.projectImageCarousel {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  overflow-x: scroll;
+  width: 100vw;
+  position: absolute;
+  height: 400px;
+  top: 50%;
+  transform: translate(0, -50%); }
+  .projectImageCarousel .projectImage {
+    margin: 0 10px;
+    border-radius: 5px;
+    box-shadow: 0 6px 44px rgba(0, 0, 0, 0.2);
+    width: 300px;
+    height: 400px;
+    min-width: 300px;
+    background-color: white; }
+
+.shutterButton {
+  width: 110px;
+  height: 110px;
+  border: 10px solid white;
+  position: fixed;
+  bottom: 40px;
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+  border-radius: 50%;
+  z-index: 75;
+  -webkit-backdrop-filter: blur(10px);
+  background-color: rgba(0, 0, 0, 0.1);
+  transition: background-color .4s ease-in-out;
+  opacity: 0;
+  pointer-events: none;
+  transition: .2s ease-in-out; }
+  .shutterButton.active {
+    opacity: 1;
+    pointer-events: initial; }
+  .shutterButton:hover {
+    cursor: pointer; }
+  .shutterButton:active {
+    background-color: white;
+    transition: background-color .05s ease-in-out; }
+
+.iconButton {
+  height: 70px;
+  width: 70px;
+  font-size: 24px;
+  text-align: center;
+  color: white;
+  background-color: rgba(0, 0, 0, 0.3);
+  outline: none;
+  border-radius: 50%;
+  display: flex;
+  align-content: center;
+  justify-content: center;
+  -webkit-backdrop-filter: blur(10px);
+  display: none;
+  position: relative;
+  transition: all .6s ease-in-out; }
+  .iconButton > i {
+    line-height: 70px;
+    width: 70px;
+    height: 70px;
+    pointer-events: none;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto; }
+  .iconButton:hover {
+    cursor: pointer; }
+  .iconButton:active {
+    background-color: rgba(0, 0, 0, 0.35); }
+  .iconButton.show {
+    display: flex; }
+
+.project__list {
+  padding: 80px 40px 0 40px; }
+  .project__list .project__item {
+    width: 100%;
+    height: 100px;
+    border-radius: 50px;
+    background-color: white;
+    box-shadow: 0 3px 25px rgba(0, 0, 0, 0.12);
+    display: flex;
+    overflow: hidden;
+    margin: 16px 0; }
+    .project__list .project__item.active {
+      box-shadow: 0 0 0 3px #797DDC, 0 3px 25px rgba(0, 0, 0, 0.12); }
+  .project__list .project__thumb {
+    width: 100px;
+    min-width: 100px;
+    height: 100px;
+    background-color: #797DDC;
+    border-radius: 50%;
+    background-image: url("assets/5B2C9603.jpg");
+    background-size: cover; }
+  .project__list .project__text {
+    width: 100%;
+    align-self: center;
+    padding: 0 26px; }
+  .project__list .project__title {
+    margin-bottom: 10px;
+    font-weight: 600;
+    font-size: 18px;
+    line-height: 1;
+    color: #797DDC; }
+  .project__list .project__reminder {
+    color: #828282; }
+
+/*# sourceMappingURL=stylesheet.css.map */
