@@ -31,6 +31,8 @@ body {
 	font-family: "Avenir";
 	margin: 0;
 	padding: 0;
+	overflow: hidden;
+	max-height: 100vh;
 
 	* {
 		box-sizing: border-box;
@@ -48,7 +50,7 @@ body {
 	position: relative;
 	opacity: 0;
 	pointer-events: none;
-	transition: opacity .3s ease-in-out;
+	transition: opacity .2s ease-in-out;
 
 	&.active {
 		height: 100vh;
@@ -62,8 +64,7 @@ body {
 		left: 0;
 		right: 0;
 		bottom: 0;
-		-webkit-backdrop-filter: blur(10px);
-		background-color: rgba(255,255,255,.75);
+		background-color: white;
 		z-index: $projectListIndex;
 	}
 
@@ -78,10 +79,12 @@ body {
 		left: 0;
 		right: 0;
 		z-index: $cameraViewIndex;
-		transition: all .2s ease-in-out;
 		display: flex;
 		align-content: center;
 		justify-content: center;
+		-webkit-backdrop-filter: blur(10px);
+		transition: all .2s ease-in-out;
+
 
 		&.listMode {
 
@@ -201,7 +204,7 @@ body {
     height: 54px;
     max-height: 54px;
     max-width: 300px;
-    background-color: rgba(255,255,255,.7);
+    background-color: rgba(255,255,255,.9);
     border-radius: 50%;
     text-align: center;
     line-height: 54px;
@@ -209,7 +212,7 @@ body {
     white-space: nowrap;
     overflow: hidden;
     text-overflow: clip;
-    width: 100%;
+    width: auto;
     padding: 0 16px;
     font-weight: 600;
     color: $brand;
@@ -234,8 +237,8 @@ body {
 		background-color: white;
 		background-size: cover;
 		background-image: url("assets/5B2C9603.jpg");
-		transition: all .6s ease-in-out;
-		background-position: center;
+		transition: all .4s ease-in-out;
+		background-position: top center;
 
 		&:last-child {
 			margin: 0;
@@ -324,7 +327,11 @@ body {
 }
 
 .project__list {
-	padding: 80px 40px 0 40px;
+	padding: 0 40px 0 40px;
+	overflow-y: scroll;
+	margin-top: 80px;
+	margin-bottom: 80px;
+	max-height: calc(80vh - 90px);
 
 	.project__item {
 	    width: 100%;
