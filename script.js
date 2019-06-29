@@ -21,6 +21,8 @@ $( document ).ready(function() {
 		$cameraOptions.toggleClass("active");
 		$(".photoOverlay").toggleClass("listMode");
 		$(".shutterButton").toggleClass("active");
+		$(".iconButton.settings").toggleClass("show");
+		$(".iconButton.share").toggleClass("show");
 	}
 
 
