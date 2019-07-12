@@ -364,12 +364,37 @@ body {
     }
 }
 
+.projectList__wrapper {
+	position: relative;
+
+	&:before,
+	&:after {
+		content: "";
+		position: absolute;
+		right: 0;
+		left: 0;
+		width: 100%;
+		height: 24px;
+		background-color: rgba(white, .5);
+		background: rgb(255,255,255);
+		background: linear-gradient(0deg, rgba(255,255,255,0) 0%, rgba(255,255,255,1) 100%);
+	}
+
+	&:before {
+		top: 0;
+	}
+
+	&:after {
+		bottom:0;
+		background: linear-gradient(180deg, rgba(255,255,255,0) 0%, rgba(255,255,255,1) 100%);
+	}
+}
+
 .project__list {
-	padding: 0 40px 0 40px;
+	padding: 24px 40px 0 40px;
 	overflow-y: scroll;
 	margin-top: 80px;
-	margin-bottom: 80px;
-	max-height: calc(80vh - 90px);
+	max-height: calc(75vh);
 
 	.project__item {
 	    width: 100%;
