@@ -12,7 +12,6 @@ $( document ).ready(function() {
 
 	function updateSelector(event) {
 		$trigger = $(event.target);
-		console.log($trigger);
 
 		$(".projectListSelector").toggleClass("active");
 		$(".projectList").toggleClass("active");
@@ -24,6 +23,7 @@ $( document ).ready(function() {
 		$(".shutterButton").toggleClass("active");
 		$(".iconButton.settings").toggleClass("show");
 		$(".iconButton.share").toggleClass("show");
+		$(".appOverlay .projectTitle__container").toggleClass("purple");
 	}
 
 	function displaySettings(event) {
