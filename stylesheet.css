@@ -30,13 +30,13 @@ body {
     bottom: 0;
     background-color: white;
     z-index: 100;
-    transition: all .6s ease-in-out, 0s opacity .6s ease-in-out;
+    transition: all 0.3s ease-in-out, 0s opacity 0.3s ease-in-out;
     box-shadow: 0 -10px 20px rgba(0, 0, 0, 0.4);
     border-top-left-radius: 10px;
     border-top-right-radius: 10px; }
     .screen.projectList.active {
       top: 0;
-      transition: all .6s ease-in-out, 0s opacity ease-in-out;
+      transition: all 0.3s ease-in-out, 0s opacity ease-in-out;
       border-radius: 0px; }
   .screen.photoOverlay {
     position: absolute;
@@ -68,10 +68,16 @@ body {
 
 .iconButton__container {
   position: fixed;
-  bottom: calc( env(safe-area-inset-top) + 32px);
   z-index: 75; }
+  .iconButton__container.top {
+    top: calc( env(safe-area-inset-top) + 8px ); }
+  .iconButton__container.bottom {
+    bottom: calc( env(safe-area-inset-top) + 8px ); }
+  .iconButton__container.right {
+    right: 32px; }
+  .iconButton__container.left {
+    left: 32px; }
   .iconButton__container.projectListSelector {
-    left: 32px;
     z-index: 125; }
     .iconButton__container.projectListSelector i {
       transition: all .3s ease-in-out; }
@@ -86,60 +92,49 @@ body {
           opacity: 0; }
         .iconButton__container.projectListSelector.active .iconButton i[class*="times"] {
           opacity: 1; }
-  .iconButton__container.cameraOptions {
-    right: 32px; }
-    .iconButton__container.cameraOptions > .iconButton {
-      display: flex;
-      margin-top: 24px;
-      transition: all .2s ease-in-out; }
-    .iconButton__container.cameraOptions [class*="fa-camera"] {
-      opacity: 0; }
-    .iconButton__container.cameraOptions.active > .iconButton {
-      margin-top: -70px;
-      opacity: 0; }
-      .iconButton__container.cameraOptions.active > .iconButton:nth-child(3) {
-        opacity: 1; }
-    .iconButton__container.cameraOptions.active [class*="fa-camera"] {
+  .iconButton__container.cameraOptions > .iconButton {
+    display: flex;
+    margin-top: 24px;
+    transition: all .2s ease-in-out; }
+  .iconButton__container.cameraOptions [class*="fa-camera"] {
+    opacity: 0; }
+  .iconButton__container.cameraOptions.active > .iconButton {
+    margin-top: -70px;
+    opacity: 0; }
+    .iconButton__container.cameraOptions.active > .iconButton:nth-child(3) {
       opacity: 1; }
-    .iconButton__container.cameraOptions.active [class*="fa-pencil-alt"] {
-      opacity: 0; }
-  .iconButton__container.projectOptions {
-    bottom: initial;
-    top: 8px;
-    width: 100%; }
-    .iconButton__container.projectOptions > .iconButton {
-      color: #797DDC;
-      background-color: white;
-      position: absolute; }
-      .iconButton__container.projectOptions > .iconButton.share {
-        right: 32px; }
-      .iconButton__container.projectOptions > .iconButton.settings {
-        left: 32px; }
+  .iconButton__container.cameraOptions.active [class*="fa-camera"] {
+    opacity: 1; }
+  .iconButton__container.cameraOptions.active [class*="fa-pencil-alt"] {
+    opacity: 0; }
 
 .projectTitle__container {
-  position: fixed;
+  position: absolute;
   top: calc( env(safe-area-inset-top) + 16px);
-  left: 0;
-  right: 0;
+  left: 50%;
+  transform: translate(-50%, 0);
   height: 54px;
   max-height: 54px;
-  max-width: 300px;
   background-color: rgba(255, 255, 255, 0.9);
   border-radius: 50%;
   text-align: center;
   line-height: 54px;
   border-radius: 27px;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: clip;
-  width: auto;
-  padding: 0 16px;
-  font-weight: 600;
-  color: #797DDC;
-  font-size: 18px;
+  padding: 0 32px;
   margin: 0 auto;
   z-index: 75;
   -webkit-backdrop-filter: blur(10px); }
+
+.projectTitle {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: clip; }
+
+.projectSubtitle {
+  position: absolute;
+  left: 0;
+  top: 40px;
+  right: 0; }
 
 .projectImageCarousel {
   display: flex;
@@ -205,7 +200,6 @@ body {
   background-color: rgba(0, 0, 0, 0.3);
   outline: none;
   border-radius: 50%;
-  display: flex;
   align-content: center;
   justify-content: center;
   -webkit-backdrop-filter: blur(10px);
@@ -225,11 +219,16 @@ body {
     margin: auto; }
   .iconButton:hover {
     cursor: pointer; }
-  .iconButton:active {
-    transition: 0s;
-    background-color: rgba(0, 0, 0, 0.5); }
   .iconButton.show {
     display: flex; }
+  .iconButton.purple {
+    color: #797DDC;
+    background-color: white; }
+    .iconButton.purple:active, .iconButton.purple:hover {
+      background-color: rgba(0, 0, 0, 0.1); }
+  .iconButton:active, .iconButton:hover {
+    transition: 0s;
+    background-color: rgba(0, 0, 0, 0.5); }
 
 .project__list {
   padding: 0 40px 0 40px;
@@ -278,11 +277,29 @@ body {
   top: 0;
   bottom: 0;
   right: 100%;
-  transition: right .6s ease-in-out, 0s opacity .6s ease-in-out;
+  transition: right 0.3s ease-in-out, 0s opacity 0.3s ease-in-out;
   z-index: 150;
   box-shadow: 0 -10px 20px rgba(0, 0, 0, 0.4); }
+  .settingsMenu .settingControls {
+    padding-left: 32px;
+    padding-right: 32px;
+    background-color: transparent;
+    position: relative;
+    top: 20vh; }
+  .settingsMenu .iconButton__container {
+    z-index: 250; }
   .settingsMenu.active {
     right: 0;
-    transition: right .6s ease-in-out, opacity 0s ease-in-out; }
+    transition: right 0.3s ease-in-out, opacity 0s ease-in-out; }
+
+.text--title {
+  font-weight: 600;
+  color: #797DDC;
+  font-size: 18px; }
+
+.text--subtitle {
+  color: #828282;
+  font-size: 14px;
+  font-weight: 200; }
 
 /*# sourceMappingURL=stylesheet.css.map */

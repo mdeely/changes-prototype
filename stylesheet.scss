@@ -12,6 +12,8 @@ $settingsMenuIndex: 150;
 
 $spaceFromSides: 32px;
 
+$screenRevealSpeed: .3s;
+
 
 @mixin iconButtonPlacement {
 	position: absolute;
@@ -67,14 +69,14 @@ body {
 		bottom: 0;
 		background-color: white;
 		z-index: $projectListIndex;
-		transition: all .6s ease-in-out, 0s opacity .6s ease-in-out;
+		transition: all $screenRevealSpeed ease-in-out, 0s opacity $screenRevealSpeed ease-in-out;
 		box-shadow: 0 -10px 20px rgba(0,0,0,.4);
 		border-top-left-radius: 10px;
 		border-top-right-radius: 10px;
 
 		&.active {
 			top: 0;
-			transition: all .6s ease-in-out, 0s opacity ease-in-out;
+			transition: all $screenRevealSpeed ease-in-out, 0s opacity ease-in-out;
 			border-radius: 0px;
 		}
 	}
@@ -124,11 +126,25 @@ body {
 
 .iconButton__container {
 	position: fixed;
-	bottom: calc( env(safe-area-inset-top) + 32px);
 	z-index: $controlsIndex;
 
-	&.projectListSelector {
+	&.top {
+		top: calc( env(safe-area-inset-top) + 8px );
+	}
+
+	&.bottom {
+		bottom: calc( env(safe-area-inset-top) + 8px );
+	}
+
+	&.right {
+		right: $spaceFromSides;
+	}
+
+	&.left {
 		left: $spaceFromSides;
+	}
+
+	&.projectListSelector {
 		z-index: $projectsListIndex;
 
 		i {
@@ -160,7 +176,6 @@ body {
 	}
 
 	&.cameraOptions {
-		right: $spaceFromSides;
 
 		> .iconButton {
 			display: flex;
@@ -191,52 +206,37 @@ body {
 			}
 		}
 	}
-
-	&.projectOptions {
-		bottom: initial;
-		top: 8px;
-		width: 100%;
-
-		> .iconButton {
-			color: $brand;
-			background-color: white;
-			position: absolute;
-
-			&.share {
-				right: $spaceFromSides;
-			}
-
-			&.settings {
-				left: $spaceFromSides;
-			}
-		}
-	}
 }
 
 .projectTitle__container {
-	position: fixed;
+	position: absolute;
 	top: calc( env(safe-area-inset-top) + 16px);
-	left: 0;
-	right: 0;
+	left: 50%;
+	transform: translate(-50%, 0);
     height: 54px;
     max-height: 54px;
-    max-width: 300px;
     background-color: rgba(255,255,255,.9);
     border-radius: 50%;
     text-align: center;
     line-height: 54px;
     border-radius: 27px;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: clip;
-    width: auto;
-    padding: 0 16px;
-    font-weight: 600;
-    color: $brand;
-    font-size: 18px;
+    padding: 0 32px;
     margin: 0 auto;
     z-index: $controlsIndex;
     -webkit-backdrop-filter: blur(10px);
+}
+
+.projectTitle {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: clip;
+}
+
+.projectSubtitle {
+	position: absolute;
+	left: 0;
+	top: 40px;
+	right: 0;
 }
 
 .projectImageCarousel {
@@ -310,7 +310,6 @@ body {
     background-color: rgba(0,0,0,.3);
     outline: none;
     border-radius: 50%;
-    display: flex;
     align-content: center;
     justify-content: center;
 	-webkit-backdrop-filter: blur(10px);
@@ -335,13 +334,24 @@ body {
     	cursor: pointer;
     }
 
-    &:active {
-    	transition: 0s;
-    	background-color: rgba(0,0,0,.5);
-    }
-
     &.show {
     	display: flex;
+    }
+
+    &.purple {
+		color: $brand;
+		background-color: white;
+
+	    &:active,
+	    &:hover {
+	    	background-color: rgba(black,.1);
+	    }
+    }
+
+    &:active,
+    &:hover {
+    	transition: 0s;
+    	background-color: rgba(black,.5);
     }
 }
 
@@ -406,14 +416,36 @@ body {
 	top: 0;
 	bottom: 0;
 	right: 100%;
-	transition: right .6s ease-in-out, 0s opacity .6s ease-in-out;
+	transition: right $screenRevealSpeed ease-in-out, 0s opacity $screenRevealSpeed ease-in-out;
 	z-index: $settingsMenuIndex;
 	box-shadow: 0 -10px 20px rgba(0,0,0,.4);
 
+	.settingControls {
+		padding-left: $spaceFromSides;
+		padding-right: $spaceFromSides;
+		background-color: transparent;
+		position: relative;
+		top: 20vh;
+	}
+
+	.iconButton__container {
+		z-index: $settingsMenuIndex + 100;
+	}
 
 	&.active {
 		right: 0;
-		transition: right .6s ease-in-out, opacity 0s ease-in-out;
+		transition: right $screenRevealSpeed ease-in-out, opacity 0s ease-in-out;
 	}
+}
 
+.text--title {
+    font-weight: 600;
+    color: $brand;
+    font-size: 18px;
+}
+
+.text--subtitle {
+	color: $color-gray;
+	font-size: 14px;
+	font-weight: 200;
 }
