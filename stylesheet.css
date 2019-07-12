@@ -57,7 +57,7 @@ body {
     .screen.photoOverlay.listMode .projectImageCarousel {
       overflow-x: scroll; }
       .screen.photoOverlay.listMode .projectImageCarousel .projectImage {
-        transition: all 0.3s ease-in-out; }
+        transition: all 0.6s ease-in-out; }
         .screen.photoOverlay.listMode .projectImageCarousel .projectImage.hero {
           margin: 0 10px;
           min-height: 400px;
@@ -167,7 +167,7 @@ body {
     background-color: white;
     background-size: cover;
     background-image: url("assets/5B2C9603.jpg");
-    transition: all 0.3s ease-in-out;
+    transition: all 0.6s ease-in-out;
     background-position: top center; }
     .projectImageCarousel .projectImage.hero {
       margin: 0;

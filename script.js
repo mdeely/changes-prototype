@@ -18,7 +18,7 @@ $( document ).ready(function() {
 	}
 
 	function handleCondenseOptions(event) {
-		var timeoutVal = 300;
+		var timeoutVal = 600;
 
 		if ( $(".listMode").length !== 0 ) {
 			var countProjectImage = $(".projectImage").length;
