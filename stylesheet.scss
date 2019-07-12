@@ -11,6 +11,7 @@ $cameraViewIndex: 50;
 $settingsMenuIndex: 150;
 
 $spaceFromSides: 32px;
+$projectTitleHeight: 54px;
 
 $screenRevealSpeed: .3s;
 
@@ -130,18 +131,26 @@ body {
 
 	&.top {
 		top: calc( env(safe-area-inset-top) + 8px );
+
+		&.right {
+			right: 16px;
+		}
+
+		&.left {
+			left: 16px;
+		}
 	}
 
 	&.bottom {
 		bottom: calc( env(safe-area-inset-top) + 8px );
-	}
 
-	&.right {
-		right: $spaceFromSides;
-	}
+		&.right {
+			right: $spaceFromSides;
+		}
 
-	&.left {
-		left: $spaceFromSides;
+		&.left {
+			left: $spaceFromSides;
+		}
 	}
 
 	&.projectListSelector {
@@ -213,12 +222,11 @@ body {
 	top: calc( env(safe-area-inset-top) + 16px);
 	left: 50%;
 	transform: translate(-50%, 0);
-    height: 54px;
-    max-height: 54px;
+    height: $projectTitleHeight;
+    max-height: $projectTitleHeight;
     background-color: rgba(255,255,255,.9);
     border-radius: 50%;
     text-align: center;
-    line-height: 54px;
     border-radius: 27px;
     padding: 0 32px;
     margin: 0 auto;
@@ -227,6 +235,7 @@ body {
 }
 
 .projectTitle {
+    line-height: $projectTitleHeight;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: clip;
@@ -235,7 +244,7 @@ body {
 .projectSubtitle {
 	position: absolute;
 	left: 0;
-	top: 40px;
+	top: 54px;
 	right: 0;
 }
 
