@@ -2,11 +2,12 @@ $( document ).ready(function() {
 
 	var $projectListSelector = $(".projectListSelector");
 	var $cameraOptions = $(".cameraOptions");
+	var $settings = $(".iconButton.settings");
 
 
 	$projectListSelector.on('click', updateSelector);
 	$cameraOptions.on('click', condenseOptions);
-
+	$settings.on('click', displaySettings);
 
 
 	function updateSelector(event) {
@@ -23,6 +24,11 @@ $( document ).ready(function() {
 		$(".shutterButton").toggleClass("active");
 		$(".iconButton.settings").toggleClass("show");
 		$(".iconButton.share").toggleClass("show");
+	}
+
+	function displaySettings(event) {
+		$settings.toggleClass("active");
+		$(".settingsMenu").toggleClass('active');
 	}
 
 

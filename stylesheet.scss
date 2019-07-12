@@ -8,6 +8,7 @@ $projectsListIndex: 125;
 $controlsIndex: 75;
 $projectListIndex: 100;
 $cameraViewIndex: 50;
+$settingsMenuIndex: 150;
 
 $spaceFromSides: 32px;
 
@@ -60,17 +61,21 @@ body {
 
 	&.projectList {
 		position: fixed;
-		top: 0;
+		top: 100%;
 		left: 0;
 		right: 0;
 		bottom: 0;
 		background-color: white;
-		transform: translate(0, 100%);
 		z-index: $projectListIndex;
-		transition: transform .6s ease-in-out;
+		transition: all .6s ease-in-out, 0s opacity .6s ease-in-out;
+		box-shadow: 0 -10px 20px rgba(0,0,0,.4);
+		border-top-left-radius: 10px;
+		border-top-right-radius: 10px;
 
 		&.active {
-			transform: translate(0, 0)
+			top: 0;
+			transition: all .6s ease-in-out, 0s opacity ease-in-out;
+			border-radius: 0px;
 		}
 	}
 
@@ -390,4 +395,25 @@ body {
     .project__reminder {
     	color: $color-gray;
     }
+}
+
+.settingsMenu {
+	min-width: 100vw;
+	min-height: 100vh;
+	overflow-x: scroll;
+	background-color: white;
+	position: fixed;
+	top: 0;
+	bottom: 0;
+	right: 100%;
+	transition: right .6s ease-in-out, 0s opacity .6s ease-in-out;
+	z-index: $settingsMenuIndex;
+	box-shadow: 0 -10px 20px rgba(0,0,0,.4);
+
+
+	&.active {
+		right: 0;
+		transition: right .6s ease-in-out, opacity 0s ease-in-out;
+	}
+
 }
