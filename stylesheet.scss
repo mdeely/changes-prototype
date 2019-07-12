@@ -104,6 +104,8 @@ body {
 		&.listMode {
 
 			.projectImageCarousel {
+				overflow-x: scroll;
+
 				.projectImage {
 					transition: all $heroPhotoResize ease-in-out;
 
@@ -264,7 +266,7 @@ body {
 	display: flex;
 	flex-direction: row-reverse;
 	flex-wrap: nowrap;
-	overflow-x: scroll;
+	overflow: hidden;
 	width: 100vw;
 	height: 100vh;
 	align-items: center;
@@ -403,7 +405,7 @@ body {
 }
 
 .project__list {
-	padding: 24px 40px 0 40px;
+	padding: 24px $spaceFromSides 0 $spaceFromSides;
 	overflow-y: scroll;
 	margin-top: 80px;
 	max-height: calc(75vh);

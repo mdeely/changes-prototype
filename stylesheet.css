@@ -54,13 +54,15 @@ body {
     justify-content: center;
     -webkit-backdrop-filter: blur(10px);
     transition: all .2s ease-in-out; }
-    .screen.photoOverlay.listMode .projectImageCarousel .projectImage {
-      transition: all 0.3s ease-in-out; }
-      .screen.photoOverlay.listMode .projectImageCarousel .projectImage.hero {
-        margin: 0 10px;
-        min-height: 400px;
-        min-width: 300px;
-        border-radius: 5px; }
+    .screen.photoOverlay.listMode .projectImageCarousel {
+      overflow-x: scroll; }
+      .screen.photoOverlay.listMode .projectImageCarousel .projectImage {
+        transition: all 0.3s ease-in-out; }
+        .screen.photoOverlay.listMode .projectImageCarousel .projectImage.hero {
+          margin: 0 10px;
+          min-height: 400px;
+          min-width: 300px;
+          border-radius: 5px; }
 
 .appOverlay {
   width: 100vw;
@@ -150,7 +152,7 @@ body {
   display: flex;
   flex-direction: row-reverse;
   flex-wrap: nowrap;
-  overflow-x: scroll;
+  overflow: hidden;
   width: 100vw;
   height: 100vh;
   align-items: center;
@@ -259,7 +261,7 @@ body {
     background: linear-gradient(180deg, rgba(255, 255, 255, 0) 0%, white 100%); }
 
 .project__list {
-  padding: 24px 40px 0 40px;
+  padding: 24px 32px 0 32px;
   overflow-y: scroll;
   margin-top: 80px;
   max-height: calc(75vh); }

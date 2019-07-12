@@ -6,7 +6,7 @@ $( document ).ready(function() {
 
 
 	$projectListSelector.on('click', updateSelector);
-	$cameraOptions.on('click', condenseOptions);
+	$cameraOptions.on('click', handleCondenseOptions);
 	$settings.on('click', displaySettings);
 
 
@@ -15,6 +15,22 @@ $( document ).ready(function() {
 
 		$(".projectListSelector").toggleClass("active");
 		$(".projectList").toggleClass("active");
+	}
+
+	function handleCondenseOptions(event) {
+		var timeoutVal = 300;
+
+		if ( $(".listMode").length !== 0 ) {
+			var countProjectImage = $(".projectImage").length;
+			var widthProjectImage = $(".projectImage:first-child").outerWidth(true);
+			var widthProjectCarousel = countProjectImage * widthProjectImage;
+			var scrollWidth = $(".projectImageCarousel")[0].scrollWidth;
+
+			$('.projectImageCarousel').animate({scrollLeft: widthProjectCarousel}, timeoutVal);
+		}
+
+		condenseOptions();
+
 	}
 
 	function condenseOptions(event) {
