@@ -29,7 +29,11 @@ body {
     right: 0;
     bottom: 0;
     background-color: white;
-    z-index: 100; }
+    transform: translate(0, 100%);
+    z-index: 100;
+    transition: transform .6s ease-in-out; }
+    .screen.projectList.active {
+      transform: translate(0, 0); }
   .screen.photoOverlay {
     position: absolute;
     width: 100vw;
@@ -51,7 +55,8 @@ body {
       .screen.photoOverlay.listMode .projectImageCarousel .projectImage:last-child {
         margin: 0 10px;
         min-height: 400px;
-        min-width: 300px; }
+        min-width: 300px;
+        border-radius: 5px; }
 
 .appOverlay {
   width: 100vw;
@@ -68,12 +73,15 @@ body {
       transition: all .3s ease-in-out; }
       .iconButton__container.projectListSelector i[class*="times"] {
         opacity: 0; }
-    .iconButton__container.projectListSelector.active .iconButton i {
-      transform: rotate(180deg); }
-      .iconButton__container.projectListSelector.active .iconButton i[class*="bars"] {
-        opacity: 0; }
-      .iconButton__container.projectListSelector.active .iconButton i[class*="times"] {
-        opacity: 1; }
+    .iconButton__container.projectListSelector.active .iconButton {
+      background-color: #797DDC; }
+      .iconButton__container.projectListSelector.active .iconButton i {
+        transform: rotate(180deg);
+        color: white; }
+        .iconButton__container.projectListSelector.active .iconButton i[class*="bars"] {
+          opacity: 0; }
+        .iconButton__container.projectListSelector.active .iconButton i[class*="times"] {
+          opacity: 1; }
   .iconButton__container.cameraOptions {
     right: 32px; }
     .iconButton__container.cameraOptions > .iconButton {
@@ -155,7 +163,8 @@ body {
       max-height: 100vh;
       max-width: 100vw;
       min-height: 100vh;
-      min-width: 100vw; }
+      min-width: 100vw;
+      border-radius: 0; }
 
 .shutterButton {
   width: 110px;
@@ -213,7 +222,8 @@ body {
   .iconButton:hover {
     cursor: pointer; }
   .iconButton:active {
-    background-color: rgba(0, 0, 0, 0.35); }
+    transition: 0s;
+    background-color: rgba(0, 0, 0, 0.5); }
   .iconButton.show {
     display: flex; }
 
