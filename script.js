@@ -3,11 +3,13 @@ $( document ).ready(function() {
 	var $projectListSelector = $(".projectTitle__container:not(.settingsTitle)");
 	var $cameraOptions = $(".cameraOptions");
 	var $settings = $(".iconButton.settings");
+	var $closeProjects = $(".closeProjects");
 
 
 	$projectListSelector.on('click', updateSelector);
 	$cameraOptions.on('click', handleCondenseOptions);
 	$settings.on('click', displaySettings);
+	$closeProjects.on('click', updateSelector);
 
 
 	function updateSelector(event) {
