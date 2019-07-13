@@ -168,6 +168,11 @@ body {
 		&.left {
 			left: $spaceFromSides;
 		}
+
+		&.middle {
+			left: 50%;
+			margin-left: -($iconSize/2);
+		}
 	}
 
 	&.projectListSelector {
@@ -257,6 +262,11 @@ body {
 	    text-overflow: clip;
 	    color: white;
 	    transition: all .3s ease-in-out;
+
+	    &:after {
+	    	margin-left: 16px;
+    		font-family: "Font Awesome 5 Free"; font-weight: 900; content: "\f0d7";
+	    }
 	}
 
     &.purple {
@@ -375,13 +385,23 @@ body {
     	display: flex;
     }
 
-    &.purple {
+    &.white {
 		color: $brand;
 		background-color: white;
 
 	    &:active,
 	    &:hover {
 	    	background-color: rgba(black,.1);
+	    }
+    }
+
+    &.purple {
+		background-color: $brand;
+		color: white;
+
+	    &:active,
+	    &:hover {
+	    	background-color: darken($brand,5%);
 	    }
     }
 

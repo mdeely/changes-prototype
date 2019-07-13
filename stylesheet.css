@@ -96,6 +96,9 @@ body {
       right: 32px; }
     .iconButton__container.bottom.left {
       left: 32px; }
+    .iconButton__container.bottom.middle {
+      left: 50%;
+      margin-left: -35px; }
   .iconButton__container.projectListSelector {
     z-index: 125; }
     .iconButton__container.projectListSelector i {
@@ -149,6 +152,11 @@ body {
     text-overflow: clip;
     color: white;
     transition: all .3s ease-in-out; }
+    .projectTitle__container .projectTitle:after {
+      margin-left: 16px;
+      font-family: "Font Awesome 5 Free";
+      font-weight: 900;
+      content: "\f0d7"; }
   .projectTitle__container.purple {
     background-color: rgba(0, 0, 0, 0);
     -webkit-backdrop-filter: blur(0px); }
@@ -246,11 +254,16 @@ body {
     cursor: pointer; }
   .iconButton.show {
     display: flex; }
-  .iconButton.purple {
+  .iconButton.white {
     color: #797DDC;
     background-color: white; }
-    .iconButton.purple:active, .iconButton.purple:hover {
+    .iconButton.white:active, .iconButton.white:hover {
       background-color: rgba(0, 0, 0, 0.1); }
+  .iconButton.purple {
+    background-color: #797DDC;
+    color: white; }
+    .iconButton.purple:active, .iconButton.purple:hover {
+      background-color: #6569d7; }
   .iconButton:active, .iconButton:hover {
     transition: 0s;
     background-color: rgba(0, 0, 0, 0.5); }

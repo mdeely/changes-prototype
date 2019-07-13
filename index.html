@@ -18,17 +18,13 @@
 	</head>
   	<body>
 
-		<video id="video" width="640" height="480" autoplay></video>
-		<button id="snap">Snap Photo</button>
-		<canvas id="canvas" width="640" height="480"></canvas>
-
   		<div class="settingsMenu screen">
-  			<div class="projectTitle__container purple">
+  			<div class="projectTitle__container purple settingsTitle">
   				<span class="projectTitle text--title">Parisian Architecture</span>
   				<span class="projectSubtitle text--subtitle">Settings</span>
   			</div>
-  			<div class="iconButton__container top left projectOptions">
-  				<div class="iconButton settings purple"><i class="fas fa-arrow-left"></i></div>
+  			<div class="iconButton__container top right projectOptions">
+  				<div class="iconButton settings white"><i class="fas fa-times"></i></div>
   			</div>
 <!--   			<div class="settingControls">
   				<input type="text" name="">
@@ -38,8 +34,11 @@
   		</div>
 
   		<div class="projectList screen">
+  			<div class="iconButton__container top right">
+  				<div class="iconButton white"><i class="fas fa-times"></i></div>
+  			</div>
   			<div class="projectTitle__container purple">
-  				<span class="projectTItle text--title">Projects</span>
+  				<span class="projectTitle text--title">Projects</span>
   			</div>
   			<div class="projectList__wrapper">
 	  			<ul class="project__list touch-scrolling">
@@ -89,23 +88,23 @@
   				<span class="projectTitle text--title">Parisian Architecture</span>
   				<span class="projectSubtitle text--subtitle">Next photo in 4 days</span>
   			</div>
-  			<div class="iconButton__container projectOptions left top">
-  				<div class="iconButton purple settings"><i class="fas fa-cog"></i></div>
+  			<div class="iconButton__container projectOptions left bottom">
+  				<div class="iconButton white settings"><i class="fas fa-ellipsis-v"></i></div>
   			</div>
-  			<div class="iconButton__container projectOptions right top">
-  				<div class="iconButton purple share"><i class="fas fa-share"></i></div>
-  			</div>
-  			<div class="iconButton__container projectListSelector left bottom">
+<!--   			<div class="iconButton__container projectOptions bottom middle">
+  				<div class="iconButton white share"><i class="fas fa-share"></i></div>
+  			</div> -->
+<!--   			<div class="iconButton__container projectListSelector left bottom">
   				<div class="iconButton show">
   					<i class="fas fa-bars"></i>
   					<i class="fas fa-times"></i>
   				</div>
-  			</div>
+  			</div> -->
   			<div class="shutterButton active"></div>
   			<div class="iconButton__container cameraOptions right bottom">
   				<div class="iconButton show"><i class="fas fa-bolt"></i></div>
   				<div class="iconButton show"><i class="fas fa-sync-alt"></i></div>
-  				<div class="iconButton show">
+  				<div class="iconButton show camera">
   					<i class="fas fa-pencil-alt"></i>
   					<i class="fas fa-camera"></i>
   				</div>
