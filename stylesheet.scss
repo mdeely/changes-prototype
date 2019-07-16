@@ -79,19 +79,20 @@ body {
 
 	&.projectList {
 		position: fixed;
-		top: 100%;
+		top: 0;
 		left: 0;
 		right: 0;
-		bottom: 0;
+		bottom: 100%;
 		background-color: white;
 		z-index: $projectListIndex;
 		transition: all $screenRevealSpeed ease-in-out, 0s opacity $screenRevealSpeed ease-in-out;
 		box-shadow: 0 -10px 20px rgba(0,0,0,.4);
 		border-top-left-radius: 10px;
 		border-top-right-radius: 10px;
+		overflow: hidden;
 
 		&.active {
-			top: 0;
+			bottom: 0;
 			transition: all $screenRevealSpeed ease-in-out, 0s opacity ease-in-out;
 			border-radius: 0px;
 		}
@@ -225,11 +226,6 @@ body {
 		&.active {
 			> .iconButton {
 				margin-top: -70px;
-				opacity: 0;
-
-				&:nth-child(3) {
-					opacity: 1;
-				}
 			}
 
 			[class*="fa-camera"] {
@@ -361,9 +357,37 @@ body {
 	}
 }
 
-.iconButton {
+.alphaSlider {
+	$alphaSliderWIdth: 44px;
+	height: 0px;
+	width: $alphaSliderWIdth;
+	-webkit-backdrop-filter: 10px;
+	background-color: rgba(black, .3);
+    border-radius: $alphaSliderWIdth/2;
+	-webkit-backdrop-filter: blur(10px);
+	margin: 0 auto;
+	overflow: hidden;
+	position: relative;
+	transition: height .3s ease-in-out;
+
+	.alphaStatus {
+		background-color: rgba(white, .35);
+		height: 45%;
+		width: 100%;
+		bottom: 0;
+		position: absolute;
+		transition: height .3s ease-in-out;
+	}
+
+	&.show {
+		height: 200px;
+	}
+}
+
+.iconButton,
+.textButton {
     height: $iconSize;
-    width: $iconSize;
+    line-height: $iconSize;
     font-size: 24px;
     text-align: center;
     color: white;
@@ -376,19 +400,6 @@ body {
 	display: none;
 	position: relative;
 	transition: all .6s ease-in-out;
-
-    > i {
-    	line-height: $iconSize;
-    	width: $iconSize;
-    	height: $iconSize;
-    	pointer-events: none;
-    	position: absolute;
-    	top: 0;
-    	bottom: 0;
-    	left: 0;
-    	right: 0;
-    	margin: auto;
-    }
 
     &:hover {
     	cursor: pointer;
@@ -427,6 +438,34 @@ body {
     	transition: 0s;
     	background-color: rgba(black,.5);
     }
+}
+
+.iconButton {
+    width: $iconSize;
+
+    > i {
+    	line-height: $iconSize;
+    	width: $iconSize;
+    	height: $iconSize;
+    	pointer-events: none;
+    	position: absolute;
+    	top: 0;
+    	bottom: 0;
+    	left: 0;
+    	right: 0;
+    	margin: auto;
+    }
+}
+
+.textButton {
+	width: auto;
+	height: $projectTitleHeight;
+	padding: 0 34px;
+	border-radius: $iconSize/2;
+	font-size: 18px;
+	font-weight: 700;
+	letter-spacing: 1.38;
+	line-height: $projectTitleHeight;
 }
 
 // .projectList__wrapper {

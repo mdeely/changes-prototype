@@ -37,18 +37,19 @@ body {
     pointer-events: initial; }
   .screen.projectList {
     position: fixed;
-    top: 100%;
+    top: 0;
     left: 0;
     right: 0;
-    bottom: 0;
+    bottom: 100%;
     background-color: white;
     z-index: 100;
     transition: all 0.3s ease-in-out, 0s opacity 0.3s ease-in-out;
     box-shadow: 0 -10px 20px rgba(0, 0, 0, 0.4);
     border-top-left-radius: 10px;
-    border-top-right-radius: 10px; }
+    border-top-right-radius: 10px;
+    overflow: hidden; }
     .screen.projectList.active {
-      top: 0;
+      bottom: 0;
       transition: all 0.3s ease-in-out, 0s opacity ease-in-out;
       border-radius: 0px; }
     .screen.projectList .closeProjects {
@@ -123,10 +124,7 @@ body {
   .iconButton__container.cameraOptions [class*="fa-camera"] {
     opacity: 0; }
   .iconButton__container.cameraOptions.active > .iconButton {
-    margin-top: -70px;
-    opacity: 0; }
-    .iconButton__container.cameraOptions.active > .iconButton:nth-child(3) {
-      opacity: 1; }
+    margin-top: -70px; }
   .iconButton__container.cameraOptions.active [class*="fa-camera"] {
     opacity: 1; }
   .iconButton__container.cameraOptions.active [class*="fa-pencil-alt"] {
@@ -229,9 +227,31 @@ body {
     background-color: white;
     transition: background-color .05s ease-in-out; }
 
-.iconButton {
+.alphaSlider {
+  height: 0px;
+  width: 44px;
+  -webkit-backdrop-filter: 10px;
+  background-color: rgba(0, 0, 0, 0.3);
+  border-radius: 22px;
+  -webkit-backdrop-filter: blur(10px);
+  margin: 0 auto;
+  overflow: hidden;
+  position: relative;
+  transition: height .3s ease-in-out; }
+  .alphaSlider .alphaStatus {
+    background-color: rgba(255, 255, 255, 0.35);
+    height: 45%;
+    width: 100%;
+    bottom: 0;
+    position: absolute;
+    transition: height .3s ease-in-out; }
+  .alphaSlider.show {
+    height: 200px; }
+
+.iconButton,
+.textButton {
   height: 70px;
-  width: 70px;
+  line-height: 70px;
   font-size: 24px;
   text-align: center;
   color: white;
@@ -244,6 +264,39 @@ body {
   display: none;
   position: relative;
   transition: all .6s ease-in-out; }
+  .iconButton:hover,
+  .textButton:hover {
+    cursor: pointer; }
+  .iconButton.show,
+  .textButton.show {
+    display: flex; }
+  .iconButton.white,
+  .textButton.white {
+    color: #797DDC;
+    background-color: white; }
+    .iconButton.white:active, .iconButton.white:hover,
+    .textButton.white:active,
+    .textButton.white:hover {
+      background-color: rgba(0, 0, 0, 0.1); }
+  .iconButton.purple,
+  .textButton.purple {
+    background-color: #797DDC;
+    color: white; }
+    .iconButton.purple:active, .iconButton.purple:hover,
+    .textButton.purple:active,
+    .textButton.purple:hover {
+      background-color: #6569d7; }
+  .iconButton .settings,
+  .textButton .settings {
+    position: absolute; }
+  .iconButton:active, .iconButton:hover,
+  .textButton:active,
+  .textButton:hover {
+    transition: 0s;
+    background-color: rgba(0, 0, 0, 0.5); }
+
+.iconButton {
+  width: 70px; }
   .iconButton > i {
     line-height: 70px;
     width: 70px;
@@ -255,25 +308,16 @@ body {
     left: 0;
     right: 0;
     margin: auto; }
-  .iconButton:hover {
-    cursor: pointer; }
-  .iconButton.show {
-    display: flex; }
-  .iconButton.white {
-    color: #797DDC;
-    background-color: white; }
-    .iconButton.white:active, .iconButton.white:hover {
-      background-color: rgba(0, 0, 0, 0.1); }
-  .iconButton.purple {
-    background-color: #797DDC;
-    color: white; }
-    .iconButton.purple:active, .iconButton.purple:hover {
-      background-color: #6569d7; }
-  .iconButton .settings {
-    position: absolute; }
-  .iconButton:active, .iconButton:hover {
-    transition: 0s;
-    background-color: rgba(0, 0, 0, 0.5); }
+
+.textButton {
+  width: auto;
+  height: 54px;
+  padding: 0 34px;
+  border-radius: 35px;
+  font-size: 18px;
+  font-weight: 700;
+  letter-spacing: 1.38;
+  line-height: 54px; }
 
 .project__list {
   padding: 24px 32px 0 32px;

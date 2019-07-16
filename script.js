@@ -2,14 +2,24 @@ $( document ).ready(function() {
 
 	var $projectListSelector = $(".projectTitle__container:not(.settingsTitle)");
 	var $cameraOptions = $(".cameraOptions");
-	var $settings = $(".iconButton.settings");
+	var $camera = $(".camera");
+	var $settings = $(".textButton.settings");
+	var $closeSettings = $(".iconButton.settings");
 	var $closeProjects = $(".closeProjects");
+	var $projectImageHero = $(".projectImage.hero");
 
 
 	$projectListSelector.on('click', updateSelector);
-	$cameraOptions.on('click', handleCondenseOptions);
+	$camera.on('click', handleCondenseOptions);
 	$settings.on('click', displaySettings);
+	$closeSettings.on('click', displaySettings);
 	$closeProjects.on('click', updateSelector);
+	$projectImageHero.on('click', handleCameraControls)
+
+	function handleCameraControls() {
+		$(".appOverlay [class*='iconButton']:not(.shutterButton)").toggle();
+		$(".projectTitle__container").toggle();
+	}
 
 
 	function updateSelector(event) {
@@ -39,15 +49,19 @@ $( document ).ready(function() {
 		$cameraOptions.toggleClass("active");
 		$(".photoOverlay").toggleClass("listMode");
 		$(".shutterButton").toggleClass("active");
-		$(".iconButton.settings").toggleClass("show");
-		$(".iconButton.share").toggleClass("show");
+		// $(".iconButton.settings").toggleClass("show");
+		// $(".iconButton.share").toggleClass("show");
 		$(".appOverlay .projectTitle__container").toggleClass("purple");
 		$(".iconButton.camera").toggleClass("purple");
+		$(".cameraModifiers .iconButton").toggleClass("show");
+		$(".textButton.settings").toggleClass("show");
+		$(".alphaSlider").toggleClass("show");
 	}
 
 	function displaySettings(event) {
 		$settings.toggleClass("active");
 		$(".settingsMenu").toggleClass('active');
+		$(".projectOptions .settings").toggleClass('show');
 	}
 
 
